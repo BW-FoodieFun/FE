@@ -3,7 +3,7 @@ import './App.css';
 import Venues from './components/Venues'
 import { fetchVenues, updateLocation, updateType } from "./actions/venue";
 import { connect } from "react-redux";
-
+import Login from './components/Login'
 
 
 function App(props) {
@@ -41,7 +41,10 @@ function App(props) {
 console.log("newType", newType)
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
+
+      <Login />
+
+      {/* <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="newLocation"
@@ -57,13 +60,13 @@ console.log("newType", newType)
             <option value="Brewery">Brewery</option>
           </select>
           <button type="submit">Submit</button>
-        </form>
+        </form> */}
 
-      <Venues venues={props.venues} 
+      {/* <Venues venues={props.venues} 
             isDogLoading={props.isDogLoading}
             dogError={props.dogError}
             newLocation={newLocation}
-            newType={newType}/>
+            newType={newType}/> */}
     </div>
   );
 }
