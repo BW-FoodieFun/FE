@@ -6,7 +6,7 @@ import { BrowserRouter as Router} from "react-router-dom";
 import {Route} from 'react-router-dom'
 import { connect } from "react-redux";
 import Login from './components/Login'
-import ProtectedRoute from './utils/ProtectedRoute'
+import PrivateRoute from './utils/ProtectedRoute'
 
 
 function App(props) {
@@ -15,8 +15,11 @@ function App(props) {
     <Router>
     <div className="App">
       <Route exact path="/" render={ props =><Login {...props}/>}/>
-      <ProtectedRoute path="/venues" 
-            venues={props.venues} 
+      <PrivateRoute path="/venues" 
+            fetchVenues={props.fetchVenues}
+            venues={props.venues}
+            updateLocation={props.updateLocation}
+            updateType={updateType} 
             isDogLoading={props.isDogLoading}
             dogError={props.dogError}
             component={Venues}/>
