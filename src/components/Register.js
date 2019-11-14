@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import api from '../utils/api'
 
-const Login = (props) => {
+const Register = (props) => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the Venues route
-  console.log("login",props)
+  console.log("register",props)
   const [warning, setWarning] = useState()
   const [data, setData] = useState({
     username: "",
@@ -21,7 +21,7 @@ const Login = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     api()
-    .post('/auth/login', data)
+    .post('/auth/register', data)
     .then(res => {
       console.log("registerResponse",res)
       localStorage.setItem("token", res.data.token)
@@ -50,10 +50,10 @@ const Login = (props) => {
        value={data.password}
        onChange={handleChange} />
 
-       <button type="submit">Login</button>
+       <button type="submit">Register</button>
      </form>
     </>
   );
 };
 
-export default Login;
+export default Register;

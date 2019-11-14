@@ -35,7 +35,7 @@ useEffect(() => {
   };
 
     return (
-        <div className="venue-list">
+        <div>
             <h1>{props.newLocation} {props.newType}</h1>
 
             <form onSubmit={handleSubmit}>
@@ -57,9 +57,11 @@ useEffect(() => {
             </form>
 
                 <img className="hero" src="./hamburger.png"/>
-
+                <div className="venue-list">
                 {props.venues.map((item, index) => (<Venue venue={item} key={index}/>)
                 )}
+                </div>
+               
         </div>
     )
 }
