@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import { fetchVenues, updateLocation, updateType } from "../actions/venue";
+import { connect } from "react-redux";
 import Venue from './Venue'
 
-export default function Venues(props) {
+function Venues(props) {
 
   const [newLocation, setNewLocation] = useState("Detroit");
   const [newType, setNewType] = useState("cravings");
-console.log("venues", props)
+  console.log("venues", props)
 
 useEffect(() => {
     // kick off our asyncronous action creator
@@ -56,7 +58,7 @@ useEffect(() => {
             <button type="submit">Submit</button>
             </form>
 
-                <img className="hero" src="./hamburger.png"/>
+                <img className="hero" src="../hamburger.png"/>
                 <div className="venue-list">
                 {props.venues.map((item, index) => (<Venue venue={item} key={index}/>)
                 )}
@@ -66,3 +68,21 @@ useEffect(() => {
     )
 }
 //connect
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    isDogLoading: state.isLoading,
+    venues: state.venues,
+    dogError: state.error
+  };
+}
+
+const mapDispatchToProps = {
+  // send a version of our action creator that's attached to
+  // the dispatcher to the component as a prop
+  fetchVenues,
+  updateLocation,
+  updateType
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Venues);
