@@ -4,8 +4,8 @@ import api from '../utils/api'
 const Login = (props) => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the Venues route
-
-  const [error, setError] = useState()
+  console.log("login",props)
+  const [warning, setWarning] = useState()
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -24,19 +24,20 @@ const Login = (props) => {
     .post('/auth/register', data)
     .then(res => {
       console.log("registerResponse",res)
-    //   localStorage.setItem("token", res.data.payload)
-    //   props.history.push('/')
+      localStorage.setItem("token", res.data.token)
+      props.history.push('/venues')
     })
     .catch(err => {
-      setError(err.response.data.error)
-      console.log(err.response.data.error)
+      console.log("err", err)
+      setWarning(err)
+      console.log(warning)
     })
   }
 
   return (
     <>
      <form onSubmit={handleSubmit}>
-      {error && <p>{error}</p>}
+      {warning && <p>{warning}</p>}
        <input type="text" 
        name="username"
        placeholder="Username"
