@@ -5,11 +5,11 @@ function getToken(){
     return localStorage.getItem("token")
 }
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, venues, fetchVenues, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      getToken() ? <Component {...props} /> : <Redirect to='/' />
+      getToken() ? <Component venues={venues} fetchVenues={fetchVenues} {...props} /> : <Redirect to='/' />
     }
   />
 );
