@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Venues from './components/Venues'
+import { fetchVenues, updateLocation, updateType } from "./actions/venue";
+import { BrowserRouter as Router} from "react-router-dom";
+import {Route} from 'react-router-dom'
+import { connect } from "react-redux";
+import Login from './components/Login'
+import ProtectedRoute from './utils/ProtectedRoute'
 
-function App() {
+
+function App(props) {
+  console.log(props)
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route exact path="/" render={ props =><Login {...props}/>}/>
+      <ProtectedRoute path="/venues" 
+            venues={props.venues} 
+            isDogLoading={props.isDogLoading}
+            dogError={props.dogError}
+            component={Venues}/>
     </div>
+    </Router>
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    isDogLoading: state.isLoading,
+    venues: state.venues,
+    dogError: state.error
+  };
+}
+
+const mapDispatchToProps = {
+  // send a version of our action creator that's attached to
+  // the dispatcher to the component as a prop
+  fetchVenues,
+  updateLocation,
+  updateType
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
