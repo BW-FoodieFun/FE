@@ -61,7 +61,9 @@ useEffect(() => {
                 <img className="hero" src="../assets/hamburger.png" alt="hamburger"/>
 
                 <div className="venue-list">
-                {props.venues.map((item, index) => (<Venue venue={item} key={index}/>)
+                {props.venues.map((item, index) => (
+                    <Venue venue={item} key={index}/>
+                )
                 )}
                 </div>
                
