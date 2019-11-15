@@ -20,7 +20,10 @@ useEffect(()=>{
 
     return (
         <div className="card">
-            <Link to={`/venue/${props.venue.id}`}>
+            <Link to={{
+                pathname: `/venue/${props.venue.id}`,
+                state: {venue: props.venue}
+            }}>
                 <img className="icon" src={newImage} alt="venue-icon"/>
                 <div className="info">
                     <h2>{props.venue.name}</h2>
