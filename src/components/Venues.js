@@ -58,7 +58,8 @@ useEffect(() => {
             <button type="submit">Submit</button>
             </form>
 
-                <img className="hero" src="../hamburger.png"/>
+                <img className="hero" src="../assets/hamburger.png" alt="hamburger"/>
+
                 <div className="venue-list">
                 {props.venues.map((item, index) => (<Venue venue={item} key={index}/>)
                 )}
