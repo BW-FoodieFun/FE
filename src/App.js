@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Nav from './components/Nav'
 import PrivateRoute from './utils/ProtectedRoute'
 import Register from './components/Register'
+import Meals from './components/Meals'
 
 
 function App(props) {
@@ -20,6 +21,7 @@ function App(props) {
       <Route exact path="/register" render={ props =><Register {...props}/>}/>
       <Route exact path="/login" render={ props =><Login {...props}/>}/>
       <PrivateRoute path="/venues" component={Venues}/>
+      <PrivateRoute path="/meals" component={Meals}/>
     </div>
     </Router>
   );

@@ -3,7 +3,10 @@ import {
     FETCH_VENUE_SUCCESS,
     FETCH_VENUE_ERROR,
     UPDATE_LOCATION,
-    UPDATE_TYPE
+    UPDATE_TYPE,
+    FETCH_MEAL_START,
+    FETCH_MEAL_SUCCESS,
+    FETCH_MEAL_ERROR
   } from "../actions/venue";
   
   const initialState = {
@@ -14,7 +17,8 @@ import {
     isLoading: false,
     error: null,
     location: '',
-    type: ''
+    type: '',
+    meals: []
   };
   
   // our finite state machine written out in code--
@@ -22,11 +26,22 @@ import {
   // which result in a new state.
   export function reducer(state = initialState, action) {
     switch (action.type) {
+      case FETCH_MEAL_START:
+        return {
+          ...state,
+          isLoading: true
+        }
+      case FETCH_MEAL_SUCCESS:
+        return {
+          ...state,
+          meals: [...action.payload],
+          isLoading: false
+        }
       case FETCH_VENUE_START:
         return {
           ...state,
           isLoading: true
-        };
+        };  
       case FETCH_VENUE_SUCCESS:
         return {
           ...state,

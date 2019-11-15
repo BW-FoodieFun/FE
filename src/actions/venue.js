@@ -1,4 +1,22 @@
 import axios from "axios";
+import api from '../utils/api'
+
+export const FETCH_MEAL_START = "FETCH_MEAL_START";
+export const FETCH_MEAL_SUCCESS = "FETCH_MEAL_SUCCESS";
+export const FETCH_MEAL_ERROR = "FETCH_MEAL_ERROR";
+
+export function fetchMeals(){
+  return dispatch => {
+    dispatch({type: FETCH_MEAL_START})
+    api()
+    .get('/meals')
+    .then(res => {
+      console.log(res)
+      dispatch({type: FETCH_MEAL_SUCCESS, payload: res.data})
+    })
+  }
+}
+
 
 export const FETCH_VENUE_START = "FETCH_VENUE_START";
 export const FETCH_VENUE_SUCCESS = "FETCH_VENUE_SUCCESS";
