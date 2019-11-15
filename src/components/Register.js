@@ -25,7 +25,7 @@ const Register = (props) => {
     .then(res => {
       console.log("registerResponse",res)
       localStorage.setItem("token", res.data.token)
-      props.history.push('/venues')
+      props.history.push('/meals')
     })
     .catch(err => {
       console.log("err", err)
