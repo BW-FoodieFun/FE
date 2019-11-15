@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import {fetchMeals} from '../actions/venue'
 
 function Meals(props) {
-
+    console.log("meals",props)
+    console.log("mealsARRAY",props.meals)
     useEffect(()=>{
         props.fetchMeals()
     },[])
