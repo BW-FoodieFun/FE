@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-
+import {Link} from 'react-router-dom'
 export default function Venue(props) {
 
 console.log("Venue", props)
@@ -20,11 +20,16 @@ useEffect(()=>{
 
     return (
         <div className="card">
-            <img className="icon" src={newImage} alt="venue-icon"/>
-            <div className="info">
-                <h2>{props.venue.name}</h2>
-                <h4>{props.venue.location.formattedAddress[0]}</h4>
-            </div>
+            <Link to={{
+                pathname: `/venue/${props.venue.id}`,
+                state: {venue: props.venue}
+            }}>
+                <img className="icon" src={newImage} alt="venue-icon"/>
+                <div className="info">
+                    <h2>{props.venue.name}</h2>
+                    <h4>{props.venue.location.formattedAddress[0]}</h4>
+                </div>
+            </Link>
         </div>
     )
 }

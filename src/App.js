@@ -9,6 +9,7 @@ import Nav from './components/Nav'
 import PrivateRoute from './utils/ProtectedRoute'
 import Register from './components/Register'
 import Meals from './components/Meals'
+import VenueDetails from './components/VenueDetails'
 
 
 function App(props) {
@@ -21,7 +22,9 @@ function App(props) {
       <Route exact path="/register" render={ props =><Register {...props}/>}/>
       <Route exact path="/login" render={ props =><Login {...props}/>}/>
       <PrivateRoute path="/venues" component={Venues}/>
+      <PrivateRoute path="/venue/:id" component={VenueDetails}/>
       <PrivateRoute path="/meals" component={Meals}/>
+
     </div>
     </Router>
   );
