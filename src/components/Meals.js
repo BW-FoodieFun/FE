@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import {fetchMeals} from '../actions/venue'
+import {Link} from 'react-router-dom'
 
 function Meals(props) {
     console.log("meals",props)
@@ -11,7 +12,8 @@ function Meals(props) {
 
     return (
         <div>
-            meals
+            <Link to="/venues">Venues</Link>
+            <h1>Meals</h1>
         </div>
     )
 }
