@@ -16,7 +16,6 @@ const MealCard = ({restaurant_name, restaurant_type, item_name,item_photo,food_r
             <p>Wait Time: {wait_time}</p>
             <p>Date Visited: {date_visited}</p>
             <button className="butt" type="submit" onClick={e => onDelete(e, id)}>Delete</button>
-            <button className="butt" type="submit">Edit</button>
        </div>
     )
 }
