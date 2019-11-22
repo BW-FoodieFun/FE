@@ -41,6 +41,7 @@ function Meals(props) {
                   item_comment={meal.item_comment}
                   wait_time={meal.wait_time}
                   date_visited={meal.date_visited}
+                  id={meal.id}
               />
             ))}
             </div>

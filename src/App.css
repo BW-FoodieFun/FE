@@ -190,6 +190,15 @@ input:focus {
   border-radius: 5px;
 }
 
+.butt{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  background: lightslategray;
+  color: Black;
+  width: 100px;
+}
 
 @media only screen and (max-width: 600px) {
   body {

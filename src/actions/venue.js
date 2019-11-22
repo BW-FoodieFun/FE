@@ -80,8 +80,26 @@ export const onSubmit= (e, formData) => dispatch =>{
     .post('https://backend-foodie-fun.herokuapp.com/api/meals', formData)
     .then(res => console.log(res), dispatch({type: SUBMIT_SUCCESS}))
     .catch(err => console.error(err));
+    
   api()
     .get('https://backend-foodie-fun.herokuapp.com/api/meals')
     .then(res => dispatch({type: MEALS_SUCCESS, payload: res.data}))
     .catch(err => console.log(err));
 }
+
+export const onDelete= (e, id) => dispatch =>{
+  e.preventDefault();
+  console.log('delete was hit')
+  console.log(id)
+  api()
+    .delete(`https://backend-foodie-fun.herokuapp.com/api/meals/${id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+
+  api()
+    .get('https://backend-foodie-fun.herokuapp.com/api/meals')
+    .then(res => dispatch({type: MEALS_SUCCESS, payload: res.data}))
+    .catch(err => console.log(err));
+}
+
+
