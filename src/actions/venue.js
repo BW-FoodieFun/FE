@@ -3,7 +3,10 @@ import api from '../utils/api'
 
 export const FETCH_MEAL_START = "FETCH_MEAL_START";
 export const FETCH_MEAL_SUCCESS = "FETCH_MEAL_SUCCESS";
-export const FETCH_MEAL_ERROR = "FETCH_MEAL_ERROR";
+export const ONCHANGE = "ONCHANGE";
+export const ONSUBMIT= "ONSUBMIT";
+export const SUBMIT_SUCCESS = "SUBMIT_SUCCESS";
+export const MEALS_SUCCESS = "MEALS_SUCCESS";
 
 export function fetchMeals(){
   return dispatch => {
@@ -62,4 +65,23 @@ export function fetchVenues(city, queryType) {
         // Code for handling errors
     });
   };
+}
+
+export const onChange= e => dispatch => {
+  const {name, value} = e.target;
+  dispatch({ type: ONCHANGE, payload: {name,value}});
+}
+
+export const onSubmit= (e, formData) => dispatch =>{
+  e.preventDefault();
+  console.log(formData)
+  dispatch({ type: ONSUBMIT});
+  api()
+    .post('https://backend-foodie-fun.herokuapp.com/api/meals', formData)
+    .then(res => console.log(res), dispatch({type: SUBMIT_SUCCESS}))
+    .catch(err => console.error(err));
+  api()
+    .get('https://backend-foodie-fun.herokuapp.com/api/meals')
+    .then(res => dispatch({type: MEALS_SUCCESS, payload: res.data}))
+    .catch(err => console.log(err));
 }

@@ -16,16 +16,16 @@ function App(props) {
   console.log(props)
   return (
     <Router>
-    <div className="App">
+      <div className="App">
 
-      <Route exact path="/" render={props =><Nav {...props}/>}/>
-      <Route exact path="/register" render={ props =><Register {...props}/>}/>
-      <Route exact path="/login" render={ props =><Login {...props}/>}/>
-      <PrivateRoute path="/venues" component={Venues}/>
-      <PrivateRoute path="/venue/:id" component={VenueDetails}/>
-      <PrivateRoute path="/meals" component={Meals}/>
+        <Route exact path="/" render={props =><Nav {...props}/>}/>
+        <Route path="/register" render={ props =><Register {...props}/>}/>
+        <Route path="/login" render={ props =><Login {...props}/>}/>
+        <Route path="/venue/:id" component={VenueDetails}/>
+        <Route path="/venues" component={Venues}/>
+        <PrivateRoute path="/meals" component={Meals}/>
 
-    </div>
+      </div>
     </Router>
   );
 }

@@ -135,6 +135,7 @@ form{
   padding: 3px;
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
   background: rgb(50, 57, 97);
 }
@@ -171,13 +172,24 @@ input {
   font-size: 22px;
 }
 
-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
 
 input:focus {
   outline: none;
 }
+
+.mealcard{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  width:75%;
+  border: 1px solid black;
+  padding: 30px;
+  margin: auto;
+  border-radius: 5px;
+}
+
 
 @media only screen and (max-width: 600px) {
   body {
@@ -199,5 +211,4 @@ input:focus {
     font-size: .75em;
     color: rgb(97, 97, 97);
   }
-
 }

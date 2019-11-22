@@ -7,9 +7,10 @@ import logger from 'redux-logger';
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {reducer} from './reducers/venue'
+import { composeWithDevTools } from "redux-devtools-extension";
 
 
-const store = createStore(reducer, applyMiddleware(thunk, logger))
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk, logger)))
 
 ReactDOM.render(
     <Provider store={store}>

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { fetchVenues, updateLocation, updateType } from "../actions/venue";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import Venue from './Venue'
 
 function Venues(props) {
@@ -41,6 +42,7 @@ useEffect(() => {
             <h1>{props.newLocation} {props.newType}</h1>
 
             <form onSubmit={handleSubmit}>
+            <Link to= "/meals" style={{color: 'white'}}>Meals!</Link>
             <input
                 type="text"
                 name="newLocation"
@@ -57,8 +59,6 @@ useEffect(() => {
             </select>
             <button type="submit">Submit</button>
             </form>
-
-                <img className="hero" src="../assets/hamburger.png" alt="hamburger"/>
 
                 <div className="venue-list">
                 {props.venues.map((item, index) => (

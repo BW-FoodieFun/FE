@@ -37,7 +37,7 @@ const Register = (props) => {
   return (
     <>
      <form onSubmit={handleSubmit}>
-      {warning && <p>{warning}</p>}
+      {/* {warning && <p>{warning}</p>} */}
        <input type="text" 
        name="username"
        placeholder="Username"

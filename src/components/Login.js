@@ -37,18 +37,20 @@ const Login = (props) => {
   return (
     <>
      <form onSubmit={handleSubmit}>
-      {warning && <p>{warning}</p>}
+      {/* {warning && <p>{warning}</p>} */}
        <input type="text" 
-       name="username"
-       placeholder="Username"
-       value={data.username}
-       onChange={handleChange}/>
+        name="username"
+        placeholder="Username"
+        value={data.username}
+        onChange={handleChange}
+       />
 
        <input type="password"
-       name="password"
-       placeholder="Password"
-       value={data.password}
-       onChange={handleChange} />
+        name="password"
+        placeholder="Password"
+        value={data.password}
+        onChange={handleChange} 
+       />
 
        <button type="submit">Login</button>
      </form>
