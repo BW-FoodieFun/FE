@@ -6,7 +6,9 @@ import {
     UPDATE_TYPE,
     FETCH_MEAL_START,
     FETCH_MEAL_SUCCESS,
-    FETCH_MEAL_ERROR
+    FETCH_MEAL_ERROR,
+    ONCHANGE,
+    MEALS_SUCCESS,
   } from "../actions/venue";
   
   const initialState = {
@@ -18,7 +20,17 @@ import {
     error: null,
     location: '',
     type: '',
-    meals: []
+    meals: [],
+    formState: {
+      restaurant_name:"",
+      restaurant_type:"",
+      item_name:"",
+      item_photo:"",
+      food_rating:"",
+      item_comment:"",
+      wait_time:"",
+      date_visited:"",
+    },
   };
   
   // our finite state machine written out in code--
@@ -54,18 +66,33 @@ import {
           error: action.payload,
           isLoading: false
         };
-        case UPDATE_LOCATION:
-      return {
-        ...state,
-        location: action.payload
-      };
+      case UPDATE_LOCATION:
+        return {
+          ...state,
+          location: action.payload
+        };
       case UPDATE_TYPE:
-      return {
-        ...state,
-        type: action.payload
-      };
+        return {
+          ...state,
+          type: action.payload
+        };
+      case ONCHANGE:
+        return{
+          ...state,
+          formState: {
+            ...state.formState,
+            [action.payload.name]:action.payload.value
+          }
+        };
+      case MEALS_SUCCESS:
+        return{
+          ...state,
+          meals:[
+            ...action.payload
+          ]
+        };
       default:
         return state;
     }
-  }
+  };
   
